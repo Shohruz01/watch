@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap");
 
 :root {
   font-family: "Inter", sans-serif;
@@ -6,30 +6,26 @@
   background: #080808;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  max-width: 100%;
-  min-width: 320px;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background:
     radial-gradient(
       circle at 75% 12%,
@@ -39,10 +35,10 @@ body {
     #080808;
 }
 
+body,
 button,
-a,
-input {
-  font: inherit;
+a {
+  font-family: "Inter", sans-serif;
 }
 
 button {
@@ -55,166 +51,244 @@ a {
 }
 
 img {
-  display: block;
   max-width: 100%;
 }
 
-.watch-app {
+#root {
   width: 100%;
   max-width: 100%;
-  min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.watch-app {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
   background:
     linear-gradient(
       90deg,
       transparent 49.95%,
-      rgba(255,255,255,0.035) 50%,
+      rgba(255, 255, 255, 0.025) 50%,
       transparent 50.05%
     );
 }
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 .navbar {
   width: 100%;
   height: 88px;
   padding: 0 5vw;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
   position: relative;
-  z-index: 20;
+  z-index: 50;
+
   backdrop-filter: blur(20px);
-  background: rgba(8,8,8,0.78);
+  -webkit-backdrop-filter: blur(20px);
+
+  background: rgba(8, 8, 8, 0.78);
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 13px;
+
   letter-spacing: 0.24em;
   font-size: 13px;
   font-weight: 500;
+
   flex-shrink: 0;
 }
 
 .brand-mark {
   width: 35px;
   height: 35px;
-  border: 1px solid rgba(208,174,99,0.7);
+
   display: grid;
   place-items: center;
+
+  border: 1px solid rgba(208, 174, 99, 0.7);
+
   color: #d4b36a;
+
   font-family: "Playfair Display", serif;
   font-size: 19px;
+
+  box-shadow:
+    0 0 20px rgba(208, 174, 99, 0.04),
+    inset 0 0 15px rgba(208, 174, 99, 0.03);
 }
 
 .brand-name {
   color: #f3f0e8;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 40px;
+
   margin-left: auto;
-  margin-right: 25px;
+  margin-right: 45px;
 }
 
 .nav-links a {
   font-family: "DM Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.13em;
+
   color: #8e8b84;
-  transition: 0.25s ease;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .nav-links a:hover {
   color: #d8b96d;
+  transform: translateY(-1px);
 }
 
 .wallet-button {
   min-width: 168px;
   height: 42px;
+
   padding: 0 17px;
-  border: 1px solid rgba(212,179,106,0.55);
+
+  border: 1px solid rgba(212, 179, 106, 0.55);
   background: transparent;
+
   color: #d8bd7a;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
+
   font-family: "DM Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
-  transition: 0.3s ease;
-  flex-shrink: 0;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .wallet-button:hover {
-  background: rgba(212,179,106,0.08);
+  background: rgba(212, 179, 106, 0.08);
   border-color: #d8bd7a;
+  transform: translateY(-1px);
 }
 
 .wallet-button:disabled {
   opacity: 0.6;
   cursor: wait;
+  transform: none;
 }
 
 .wallet-button.connected {
-  border-color: rgba(94,174,137,0.6);
+  border-color: rgba(94, 174, 137, 0.6);
   color: #9ed5b8;
 }
 
 .wallet-dot {
   width: 6px;
   height: 6px;
+
+  flex-shrink: 0;
+
   border-radius: 50%;
+
   background: #d5b66d;
-  box-shadow: 0 0 12px rgba(213,182,109,0.8);
+
+  box-shadow:
+    0 0 8px rgba(213, 182, 109, 0.8),
+    0 0 18px rgba(213, 182, 109, 0.35);
 }
 
-/* =========================
-   MESSAGE
-========================= */
+/* =========================================================
+   WALLET MESSAGE
+========================================================= */
 
 .message-wrap {
   position: fixed;
+
   top: 100px;
   right: 25px;
+
   max-width: min(500px, calc(100vw - 30px));
+
   z-index: 100;
+
+  animation: messageIn 0.35s ease;
+}
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .wallet-message {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+
   padding: 14px 17px;
-  border: 1px solid rgba(208,174,76,0.35);
-  background: rgba(16,14,10,0.95);
+
+  border: 1px solid rgba(208, 174, 76, 0.35);
+
+  background: rgba(16, 14, 10, 0.96);
+
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
   color: #dfd5bd;
-  box-shadow: 0 15px 60px rgba(0,0,0,0.45);
+
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.45);
 }
 
 .wallet-message > span {
   width: 20px;
   height: 20px;
+
   flex-shrink: 0;
+
   display: grid;
   place-items: center;
+
   border: 1px solid #b99958;
+
   color: #d2af64;
+
   font-family: "DM Mono", monospace;
   font-size: 11px;
 }
 
 .wallet-message p {
   margin: 1px 0 0;
+
   font-size: 12px;
   line-height: 1.6;
 }
@@ -222,50 +296,71 @@ img {
 .wallet-message button {
   border: 0;
   background: transparent;
+
   color: #77736b;
+
   font-size: 20px;
   line-height: 1;
+
   margin-left: auto;
+  padding: 0 0 0 10px;
 }
 
-/* =========================
+.wallet-message button:hover {
+  color: #d8bd7a;
+}
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
   width: 100%;
-  max-width: 100%;
+
   min-height: calc(100vh - 88px);
-  padding: 7vw;
+
+  padding: 7vw 7vw 5vw;
+
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: 0.95fr 1.05fr;
+
   gap: 4vw;
+
   align-items: center;
+
   position: relative;
 }
 
 .hero::before {
   content: "";
+
   position: absolute;
+
   width: 650px;
   height: 650px;
-  max-width: 90vw;
+
   right: 5%;
   top: 8%;
+
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(196,159,82,0.12),
-    transparent 68%
-  );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(196, 159, 82, 0.12),
+      transparent 68%
+    );
+
   filter: blur(15px);
+
   pointer-events: none;
 }
 
 .hero-copy {
-  min-width: 0;
   position: relative;
   z-index: 3;
+
+  width: 100%;
   max-width: 670px;
 }
 
@@ -274,8 +369,11 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
+
   color: #a58a55;
+
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
   letter-spacing: 0.19em;
 }
@@ -283,68 +381,96 @@ img {
 .hero-label span {
   width: 32px;
   height: 1px;
+
   background: #b69758;
 }
 
 .hero h1 {
   margin: 28px 0 25px;
+
   font-size: clamp(65px, 9vw, 145px);
+
   line-height: 0.78;
+
   letter-spacing: -0.07em;
+
   font-weight: 300;
 }
 
 .hero h1 em {
   font-family: "Playfair Display", serif;
+
   font-weight: 400;
+
   letter-spacing: -0.06em;
+
   color: #d2b16b;
 }
 
 .hero-text {
+  width: 100%;
   max-width: 450px;
+
   color: #92908a;
+
   font-size: 14px;
   line-height: 1.9;
+
   font-weight: 300;
 }
 
 .hero-actions {
   display: flex;
+
   gap: 12px;
+
   margin-top: 38px;
 }
 
-.primary-button,
-.outline-button {
+.primary-button {
   min-height: 54px;
+
+  padding: 0 24px;
+
+  border: 1px solid #c5a45f;
+
+  background: #c5a45f;
+
+  color: #090909;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+
   gap: 18px;
+
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
   letter-spacing: 0.08em;
-  transition: 0.3s ease;
-}
 
-.primary-button {
-  padding: 0 24px;
-  border: 1px solid #c5a45f;
-  background: #c5a45f;
-  color: #090909;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .primary-button strong {
   padding-left: 18px;
-  border-left: 1px solid rgba(0,0,0,0.25);
+
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+
   font-weight: 500;
 }
 
 .primary-button:hover {
   background: #e0c27b;
+
   border-color: #e0c27b;
+
   transform: translateY(-2px);
+
+  box-shadow: 0 12px 30px rgba(197, 164, 95, 0.15);
 }
 
 .primary-button:disabled {
@@ -354,126 +480,196 @@ img {
 }
 
 .outline-button {
+  min-height: 54px;
+
   padding: 0 23px;
-  border: 1px solid rgba(255,255,255,0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
   background: transparent;
+
   color: #d8d4cb;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
 }
 
 .outline-button span {
   color: #c5a45f;
+
   font-size: 16px;
 }
 
 .outline-button:hover {
-  border-color: rgba(197,164,95,0.6);
+  border-color: rgba(197, 164, 95, 0.6);
+
   color: #fff;
+
+  background: rgba(197, 164, 95, 0.035);
 }
 
-/* =========================
+/* =========================================================
    WALLET PANEL
-========================= */
+========================================================= */
 
 .wallet-panel {
   width: 100%;
   max-width: 520px;
+
   margin-top: 35px;
+
   padding: 18px 20px;
-  border: 1px solid rgba(255,255,255,0.09);
-  background: rgba(255,255,255,0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.01);
 }
 
 .wallet-panel-top {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
   letter-spacing: 0.16em;
+
   color: #6e6b64;
 }
 
 .wallet-panel-top b {
   color: #8ec7a8;
+
   font-weight: 400;
 }
 
 .wallet-address {
   margin-top: 13px;
+
   padding-bottom: 13px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
+
   color: #b7b3aa;
+
   white-space: nowrap;
+
   overflow: hidden;
+
   text-overflow: ellipsis;
 }
 
 .wallet-details {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px 55px;
+
+  gap: 55px;
+
   margin-top: 14px;
 }
 
 .wallet-details div {
   display: flex;
   flex-direction: column;
+
   gap: 6px;
 }
 
 .wallet-details small {
   color: #65625c;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.1em;
 }
 
 .wallet-details strong {
   color: #d8c99f;
+
   font-family: "DM Mono", monospace;
+
   font-size: 12px;
+
   font-weight: 400;
 }
 
-/* =========================
+/* =========================================================
    HERO VISUAL
-========================= */
+========================================================= */
 
 .hero-visual {
-  width: 100%;
-  min-width: 0;
   min-height: 650px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   position: relative;
-  overflow: hidden;
+
+  overflow: visible;
 }
 
 .watch-card {
   width: min(510px, 85%);
-  max-width: 510px;
+
   aspect-ratio: 0.76;
+
   position: relative;
+
   padding: 22px;
-  border: 1px solid rgba(208,174,98,0.4);
+
+  border: 1px solid rgba(208, 174, 98, 0.4);
+
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,0.07),
-      rgba(255,255,255,0.015)
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.015)
     );
+
   box-shadow:
-    0 45px 100px rgba(0,0,0,0.55),
-    inset 0 0 70px rgba(207,166,78,0.04);
+    0 45px 100px rgba(0, 0, 0, 0.55),
+    inset 0 0 70px rgba(207, 166, 78, 0.04);
+
   animation: cardFloat 6s ease-in-out infinite;
+
   z-index: 3;
 }
 
+.watch-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.025);
+
+  pointer-events: none;
+}
+
 @keyframes cardFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
 
@@ -485,28 +681,38 @@ img {
 .card-top,
 .card-bottom {
   display: flex;
+
   justify-content: space-between;
-  gap: 15px;
+
   color: #807c73;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.16em;
 }
 
 .watch-image {
   height: calc(100% - 60px);
+
   display: grid;
+
   place-items: center;
+
   padding: 25px;
 }
 
 .watch-image img {
   width: 92%;
   height: 92%;
+
   object-fit: contain;
+
   filter:
-    drop-shadow(0 25px 35px rgba(0,0,0,0.7))
-    drop-shadow(0 0 35px rgba(204,168,89,0.12));
+    drop-shadow(0 25px 35px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 35px rgba(204, 168, 89, 0.12));
+
   animation: nftAppear 0.6s ease;
 }
 
@@ -524,40 +730,55 @@ img {
 
 .card-bottom {
   color: #69665e;
+
   line-height: 1.5;
 }
 
 .visual-orbit {
   position: absolute;
+
   border-radius: 50%;
-  border: 1px solid rgba(198,162,88,0.1);
+
+  border: 1px solid rgba(198, 162, 88, 0.1);
+
   pointer-events: none;
 }
 
 .orbit-one {
   width: 600px;
   height: 600px;
+
   transform: rotate(30deg) scaleY(0.5);
 }
 
 .orbit-two {
   width: 700px;
   height: 700px;
+
   transform: rotate(-30deg) scaleY(0.35);
-  border-color: rgba(255,255,255,0.045);
+
+  border-color: rgba(255, 255, 255, 0.045);
 }
 
 .visual-caption {
   position: absolute;
+
   right: 2%;
   top: 15%;
+
   display: flex;
   flex-direction: column;
+
   gap: 5px;
+
   color: #69655d;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.15em;
+
   z-index: 5;
 }
 
@@ -567,323 +788,492 @@ img {
 
 .slider-dots {
   position: absolute;
+
   bottom: 4%;
+
   display: flex;
+
   gap: 8px;
+
   z-index: 5;
 }
 
 .slider-dots button {
   width: 22px;
   height: 2px;
+
   border: 0;
   padding: 0;
+
   background: #383632;
+
   transition: 0.3s ease;
 }
 
 .slider-dots button.active {
   width: 42px;
+
   background: #c8a965;
+
+  box-shadow: 0 0 10px rgba(200, 169, 101, 0.25);
 }
 
-/* =========================
+/* =========================================================
    STATS
-========================= */
+========================================================= */
 
 .stats-section {
-  width: calc(100% - 14vw);
   margin: 0 7vw;
+
   padding: 32px 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+
+  grid-template-columns:
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr;
+
   align-items: center;
+
   gap: 35px;
 }
 
 .stat-item {
-  min-width: 0;
   display: flex;
+
   flex-direction: column;
+
   gap: 7px;
 }
 
 .stat-item strong {
   font-family: "DM Mono", monospace;
+
   font-size: 21px;
+
   font-weight: 400;
+
   color: #ddd8cc;
 }
 
 .stat-item span {
   color: #5e5b55;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.15em;
 }
 
 .stat-line {
   width: 1px;
   height: 34px;
-  background: rgba(255,255,255,0.1);
+
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* =========================
+/* =========================================================
    COLLECTION
-========================= */
+========================================================= */
 
 .collection-section {
-  width: 100%;
   padding: 150px 7vw;
 }
 
 .section-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+
+  grid-template-columns: 1fr 0.7fr;
+
   gap: 10vw;
+
   align-items: end;
+
   margin-bottom: 65px;
 }
 
 .section-intro h2 {
   margin: 25px 0 0;
+
   font-size: clamp(50px, 6vw, 90px);
+
   line-height: 0.9;
+
   font-weight: 300;
+
   letter-spacing: -0.06em;
 }
 
 .section-intro h2 em {
   font-family: "Playfair Display", serif;
+
   color: #c8a865;
 }
 
 .section-intro > p {
   color: #77736c;
+
   max-width: 380px;
+
   font-size: 13px;
+
   line-height: 1.9;
+
   margin: 0;
 }
 
 .collection-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  grid-template-columns: repeat(5, 1fr);
+
   gap: 12px;
 }
 
 .collection-card {
   min-width: 0;
+
   position: relative;
+
   padding: 0;
+
   aspect-ratio: 0.72;
+
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.09);
-  background: linear-gradient(145deg, #171715, #0c0c0b);
-  transition: 0.4s ease;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  background:
+    linear-gradient(
+      145deg,
+      #171715,
+      #0c0c0b
+    );
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .collection-card:hover,
 .collection-card.selected {
-  border-color: rgba(197,164,95,0.55);
+  border-color: rgba(197, 164, 95, 0.55);
+
   transform: translateY(-7px);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(197, 164, 95, 0.035);
 }
 
 .collection-card img {
   width: 100%;
   height: 100%;
+
   object-fit: contain;
+
   padding: 28px;
-  transition: 0.5s ease;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
 
 .collection-card:hover img {
   transform: scale(1.05);
+
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.45));
 }
 
 .collection-number {
   position: absolute;
+
   left: 15px;
   top: 15px;
+
   color: #57534c;
+
   font-family: "DM Mono", monospace;
+
   font-size: 9px;
+
   z-index: 2;
 }
 
 .collection-card-bottom {
   position: absolute;
+
   bottom: 0;
   left: 0;
   right: 0;
+
   padding: 17px;
+
   display: flex;
+
   justify-content: space-between;
-  gap: 10px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.85)
+    );
+
   color: #aaa69c;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.1em;
 }
 
 .collection-card-bottom strong {
   color: #c4a360;
+
   font-weight: 400;
 }
 
-/* =========================
+/* =========================================================
    STORY
-========================= */
+========================================================= */
 
 .story-section {
-  width: 100%;
   min-height: 650px;
+
   padding: 120px 15vw;
-  border-top: 1px solid rgba(255,255,255,0.07);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
   display: grid;
-  grid-template-columns: minmax(0, 0.3fr) minmax(0, 1fr);
+
+  grid-template-columns: 0.3fr 1fr;
+
   gap: 8vw;
+
   align-items: center;
+
   position: relative;
+
   overflow: hidden;
 }
 
 .story-section::after {
   content: "WATCH";
+
   position: absolute;
+
   right: -2%;
   bottom: 2%;
+
   font-size: 15vw;
+
   line-height: 1;
-  color: rgba(255,255,255,0.018);
+
+  color: rgba(255, 255, 255, 0.018);
+
   letter-spacing: -0.08em;
+
   pointer-events: none;
 }
 
 .story-number {
   color: #c5a45f;
+
   font-family: "DM Mono", monospace;
+
   font-size: 12px;
 }
 
 .story-content {
   max-width: 700px;
+
   position: relative;
+
   z-index: 2;
 }
 
 .story-content h2 {
   margin: 28px 0;
+
   font-size: clamp(55px, 7vw, 100px);
+
   font-weight: 300;
+
   line-height: 0.87;
+
   letter-spacing: -0.06em;
 }
 
 .story-content h2 em {
   font-family: "Playfair Display", serif;
+
   color: #c9a968;
 }
 
 .story-content p {
   max-width: 530px;
+
   color: #77736b;
+
   font-size: 14px;
+
   line-height: 1.9;
 }
 
 .story-signature {
   margin-top: 45px;
+
   display: flex;
+
   align-items: center;
+
   gap: 13px;
+
   color: #77736b;
+
   font-family: "DM Mono", monospace;
+
   font-size: 9px;
+
   letter-spacing: 0.15em;
 }
 
 .story-signature span {
   width: 35px;
   height: 1px;
+
   background: #a88b54;
 }
 
-/* =========================
+/* =========================================================
    MINT
-========================= */
+========================================================= */
 
 .mint-section {
-  width: 100%;
   min-height: 620px;
+
   padding: 100px 20px;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.07);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
   position: relative;
+
   overflow: hidden;
 }
 
 .mint-glow {
   position: absolute;
+
   width: 600px;
   height: 600px;
-  max-width: 90vw;
+
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(201,166,91,0.13),
-    transparent 68%
-  );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201, 166, 91, 0.13),
+      transparent 68%
+    );
+
   filter: blur(20px);
+
+  pointer-events: none;
 }
 
 .mint-section .eyebrow {
   position: relative;
+
+  z-index: 2;
 }
 
 .mint-section h2 {
   position: relative;
+
+  z-index: 2;
+
   margin: 28px 0 20px;
+
   font-size: clamp(60px, 9vw, 125px);
+
   line-height: 0.82;
+
   font-weight: 300;
+
   letter-spacing: -0.07em;
 }
 
 .mint-section h2 em {
   font-family: "Playfair Display", serif;
+
   color: #c9a866;
 }
 
 .mint-section p {
   position: relative;
+
+  z-index: 2;
+
   color: #77736c;
+
   font-size: 13px;
 }
 
 .large-mint-button {
   position: relative;
+
+  z-index: 2;
+
   margin-top: 30px;
+
   width: min(300px, 100%);
+
   height: 58px;
+
   padding: 0 20px 0 25px;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   border: 1px solid #c5a45f;
+
   background: transparent;
+
   color: #d4b56f;
+
   font-family: "DM Mono", monospace;
+
   font-size: 10px;
+
   letter-spacing: 0.09em;
-  transition: 0.3s ease;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .large-mint-button span {
@@ -892,42 +1282,62 @@ img {
 
 .large-mint-button:hover {
   background: #c5a45f;
+
   color: #080808;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 15px 35px rgba(197, 164, 95, 0.15);
 }
 
 .large-mint-button:disabled {
   opacity: 0.5;
+
   cursor: wait;
+
+  transform: none;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer {
-  width: 100%;
   min-height: 90px;
+
   padding: 0 7vw;
-  border-top: 1px solid rgba(255,255,255,0.08);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
   display: grid;
+
   grid-template-columns: 1fr 1fr 1fr;
+
   align-items: center;
+
   color: #55524c;
+
   font-family: "DM Mono", monospace;
+
   font-size: 8px;
+
   letter-spacing: 0.14em;
 }
 
 .footer-brand {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
   color: #9b958a;
 }
 
 .footer-brand .brand-mark {
   width: 27px;
   height: 27px;
+
   font-size: 15px;
 }
 
@@ -937,22 +1347,31 @@ img {
 
 .footer-center span {
   color: #a98b52;
+
   margin: 0 8px;
 }
 
 .footer-right {
   display: flex;
+
   justify-content: flex-end;
+
   gap: 25px;
 }
 
 .footer-right a {
   color: #a9915e;
+
+  transition: color 0.25s ease;
 }
 
-/* =========================
+.footer-right a:hover {
+  color: #e0c27b;
+}
+
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 1000px) {
   .nav-links {
@@ -960,12 +1379,16 @@ img {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
+
     padding-top: 70px;
+
+    gap: 20px;
   }
 
   .hero-copy {
     text-align: center;
+
     margin: auto;
   }
 
@@ -980,12 +1403,14 @@ img {
 
   .hero-actions {
     justify-content: center;
+
     flex-wrap: wrap;
   }
 
   .wallet-panel {
     margin-left: auto;
     margin-right: auto;
+
     text-align: left;
   }
 
@@ -994,16 +1419,13 @@ img {
   }
 
   .collection-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .section-intro {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 25px;
-  }
+    grid-template-columns: 1fr;
 
-  .section-intro > p {
-    max-width: 550px;
+    gap: 25px;
   }
 
   .story-section {
@@ -1011,122 +1433,176 @@ img {
   }
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 650px) {
   .navbar {
     height: 68px;
+
     padding: 0 14px;
-    gap: 10px;
   }
 
   .brand {
     gap: 8px;
   }
 
+  .brand-mark {
+    width: 31px;
+    height: 31px;
+
+    font-size: 17px;
+  }
+
   .brand-name {
     display: none;
   }
 
-  .brand-mark {
-    width: 32px;
-    height: 32px;
-  }
-
   .wallet-button {
-    min-width: 0;
-    width: auto;
-    max-width: 145px;
+    min-width: 125px;
+    max-width: 150px;
+
     height: 38px;
+
     padding: 0 10px;
+
     font-size: 8px;
+
+    white-space: nowrap;
   }
 
   .hero {
+    width: 100%;
+
     min-height: auto;
-    padding: 55px 16px 30px;
+
+    padding: 58px 16px 35px;
+
     display: flex;
+
     flex-direction: column;
-    gap: 10px;
+
+    gap: 15px;
   }
 
   .hero-copy {
     width: 100%;
+
     max-width: 100%;
+
+    text-align: center;
   }
 
   .hero-label {
     justify-content: center;
+
     font-size: 8px;
   }
 
   .hero h1 {
     width: 100%;
-    max-width: 100%;
-    margin-top: 25px;
+
+    margin: 23px 0 20px;
+
     font-size: clamp(52px, 19vw, 82px);
+
     line-height: 0.84;
+
     overflow-wrap: break-word;
   }
 
   .hero-text {
     width: 100%;
+
     max-width: 100%;
+
     font-size: 12px;
-    line-height: 1.7;
+
+    line-height: 1.75;
   }
 
   .hero-actions {
     width: 100%;
-    max-width: 100%;
+
     flex-direction: column;
+
     gap: 10px;
-    margin-top: 28px;
+
+    margin-top: 27px;
   }
 
   .primary-button,
   .outline-button {
     width: 100%;
+
     max-width: 100%;
+
     min-height: 50px;
+
+    justify-content: center;
   }
 
   .wallet-panel {
     width: 100%;
+
     max-width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
     overflow: hidden;
   }
 
   .wallet-address {
     max-width: 100%;
+
+    font-size: 9px;
   }
 
   .wallet-details {
-    gap: 20px 30px;
+    gap: 22px;
+
+    flex-wrap: wrap;
+  }
+
+  .wallet-details strong {
+    font-size: 11px;
   }
 
   .hero-visual {
     width: 100%;
+
     max-width: 100%;
-    min-height: 410px;
+
+    min-height: 430px;
+
     overflow: hidden;
   }
 
   .watch-card {
     width: min(82vw, 340px);
+
     max-width: 340px;
-    padding: 16px;
+
+    aspect-ratio: 0.76;
+
+    padding: 17px;
   }
 
   .watch-image {
-    padding: 15px;
+    padding: 13px;
   }
 
   .watch-image img {
     width: 100%;
     height: 100%;
+  }
+
+  .card-top,
+  .card-bottom {
+    font-size: 7px;
   }
 
   .orbit-one {
@@ -1141,19 +1617,30 @@ img {
 
   .visual-caption {
     right: 5px;
+
     top: 12%;
+
+    font-size: 7px;
   }
 
   .slider-dots {
-    bottom: 1%;
+    bottom: 2%;
   }
+
+  /* STATS */
 
   .stats-section {
     width: calc(100% - 32px);
+
+    max-width: 100%;
+
     margin: 0 16px;
+
     padding: 25px 0;
+
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
+
+    gap: 25px 18px;
   }
 
   .stat-line {
@@ -1166,16 +1653,27 @@ img {
 
   .stat-item span {
     font-size: 7px;
+
+    line-height: 1.4;
   }
+
+  /* COLLECTION */
 
   .collection-section {
     width: 100%;
-    padding: 80px 16px;
+
+    max-width: 100%;
+
+    padding: 85px 16px;
+
     overflow: hidden;
   }
 
   .section-intro {
     width: 100%;
+
+    max-width: 100%;
+
     margin-bottom: 40px;
   }
 
@@ -1185,78 +1683,134 @@ img {
 
   .section-intro > p {
     font-size: 12px;
+
+    line-height: 1.8;
   }
 
   .collection-grid {
     width: 100%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    max-width: 100%;
+
+    grid-template-columns: 1fr 1fr;
+
     gap: 8px;
   }
 
   .collection-card {
     width: 100%;
+
     min-width: 0;
+
+    aspect-ratio: 0.72;
   }
 
   .collection-card img {
-    padding: 15px;
+    padding: 13px;
+  }
+
+  .collection-number {
+    left: 9px;
+    top: 9px;
+
+    font-size: 7px;
   }
 
   .collection-card-bottom {
-    padding: 12px;
+    padding: 11px 9px;
+
+    font-size: 6px;
   }
+
+  /* STORY */
 
   .story-section {
     width: 100%;
+
+    max-width: 100%;
+
     min-height: auto;
+
     padding: 80px 16px;
+
     display: block;
+
     overflow: hidden;
   }
 
   .story-number {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
+
+    font-size: 10px;
   }
 
   .story-content h2 {
     font-size: clamp(45px, 15vw, 65px);
+
+    line-height: 0.88;
   }
 
   .story-content p {
     font-size: 12px;
+
+    line-height: 1.85;
+  }
+
+  .story-signature {
+    margin-top: 35px;
   }
 
   .story-section::after {
     font-size: 28vw;
   }
 
+  /* MINT */
+
   .mint-section {
     width: 100%;
+
+    max-width: 100%;
+
     min-height: 550px;
+
     padding: 80px 16px;
+
+    overflow: hidden;
   }
 
   .mint-section h2 {
     width: 100%;
+
     font-size: clamp(48px, 17vw, 75px);
   }
 
   .mint-section p {
-    max-width: 330px;
-    line-height: 1.7;
+    font-size: 12px;
   }
 
   .large-mint-button {
     width: 100%;
+
     max-width: 340px;
+
+    min-width: 0;
   }
+
+  /* FOOTER */
 
   .footer {
     width: 100%;
+
+    max-width: 100%;
+
     min-height: auto;
+
     padding: 25px 16px;
+
     grid-template-columns: 1fr;
+
     gap: 18px;
+
     text-align: center;
   }
 
@@ -1265,21 +1819,29 @@ img {
     justify-content: center;
   }
 
+  .footer-right {
+    gap: 18px;
+  }
+
+  /* MESSAGE */
+
   .message-wrap {
     left: 15px;
     right: 15px;
-    top: 85px;
+
+    top: 82px;
+
     max-width: none;
   }
 
   .wallet-message {
-    width: 100%;
+    padding: 13px;
   }
 }
 
-/* =========================
+/* =========================================================
    VERY SMALL PHONES
-========================= */
+========================================================= */
 
 @media (max-width: 380px) {
   .navbar {
@@ -1287,13 +1849,14 @@ img {
   }
 
   .wallet-button {
-    max-width: 130px;
+    min-width: 115px;
+
     font-size: 7px;
   }
 
   .hero {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 13px;
+    padding-right: 13px;
   }
 
   .hero h1 {
@@ -1301,25 +1864,36 @@ img {
   }
 
   .watch-card {
-    width: 88vw;
+    width: 84vw;
   }
 
-  .collection-section {
-    padding-left: 12px;
-    padding-right: 12px;
+  .collection-section,
+  .story-section,
+  .mint-section {
+    padding-left: 13px;
+    padding-right: 13px;
   }
 
   .collection-grid {
     gap: 6px;
   }
 
-  .story-section {
-    padding-left: 12px;
-    padding-right: 12px;
+  .collection-card-bottom {
+    font-size: 5.5px;
   }
+}
 
-  .mint-section {
-    padding-left: 12px;
-    padding-right: 12px;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
