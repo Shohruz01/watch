@@ -61,6 +61,7 @@ function App() {
   const [mintPrice, setMintPrice] = useState(null);
 
   useEffect(() => {
+    loadMinted();
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % NFTs.length);
     }, 3500);
@@ -68,29 +69,35 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  async function loadMinted(providerOverride = null) {
-    try {
-      const provider =
-        providerOverride ||
-        wcProvider ||
-        window.ethereum;
+ async function loadMinted(providerOverride = null) {
+  try {
+    let ethersProvider;
 
-      if (!provider) return;
-
-      const ethersProvider = new ethers.BrowserProvider(provider);
-
-      const contract = new ethers.Contract(
-        CONTRACT_ADDRESS,
-        WATCH_ABI,
-        ethersProvider
+    if (providerOverride) {
+      ethersProvider = new ethers.BrowserProvider(providerOverride);
+    } else if (wcProvider) {
+      ethersProvider = new ethers.BrowserProvider(wcProvider);
+    } else if (window.ethereum) {
+      ethersProvider = new ethers.BrowserProvider(window.ethereum);
+    } else {
+      // Read-only provider — wallet лозим нест
+      ethersProvider = new ethers.JsonRpcProvider(
+        "https://mainnet.base.org"
       );
-
-      const total = await contract.totalMinted();
-      setMinted(Number(total));
-    } catch (err) {
-      console.error("loadMinted error:", err);
     }
+
+    const contract = new ethers.Contract(
+      CONTRACT_ADDRESS,
+      WATCH_ABI,
+      ethersProvider
+    );
+
+    const total = await contract.totalMinted();
+    setMinted(Number(total));
+  } catch (err) {
+    console.error("loadMinted error:", err);
   }
+}
 
   async function loadWalletInfo(providerOverride = null, wallet = null) {
     try {
