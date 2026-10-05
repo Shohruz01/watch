@@ -13,11 +13,11 @@ import {
 } from "./config";
 
 const NFTs = [
-  { id: 1, image: "/nfts/WATCH-1.svg" },
-  { id: 2, image: "/nfts/WATCH-2.svg" },
-  { id: 3, image: "/nfts/WATCH-3.svg" },
-  { id: 4, image: "/nfts/WATCH-4.svg" },
-  { id: 5, image: "/nfts/WATCH-5.svg" },
+  { id: 1, image: "/watch/watch/nfts/WATCH-1.svg" },
+  { id: 2, image: "/watch/nfts/WATCH-2.svg" },
+  { id: 3, image: "/watch/nfts/WATCH-3.svg" },
+  { id: 4, image: "/watch/nfts/WATCH-4.svg" },
+  { id: 5, image: "/watch/nfts/WATCH-5.svg" },
 ];
 
 const OPENSEA_URL =
@@ -43,7 +43,7 @@ async function getWalletConnectProvider() {
       name: "WATCH",
       description: "WATCH — Luxury Digital Timepieces",
       url: window.location.origin,
-      icons: [`${window.location.origin}/nfts/WATCH-1.svg`],
+      icons: [`${window.location.origin}/watch/nfts/WATCH-1.svg`],
     },
   });
 
