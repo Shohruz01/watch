@@ -1,0 +1,4 @@
+export const CONTRACT_ADDRESS = "0xAE4Ccbc46058668D9548F0601403860153D6E746";
+export const CHAIN_ID = 8453;
+export const MINT_PRICE = "0.005";
+export const MAX_SUPPLY = 10000;
